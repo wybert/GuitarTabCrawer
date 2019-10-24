@@ -1,10 +1,21 @@
 # GuitarTabCrawer
 下载吉他社吉他谱
 
+## 安装
+
+下载 guitar_dl.py
+
+```bash
+git clone https://github.com/wybert/GuitarTabCrawer.git
+```
+
+将`guitar_dl.py`copy到python安装路径下的`Lib`文件夹下
+
 ## 使用帮助
 
 ```bash
 python guitar_dl.py --help
+python -m guitar_dl --help
 
 Usage: guitar_dl.py [OPTIONS] COMMAND [ARGS]...
 

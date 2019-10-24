@@ -60,11 +60,13 @@ def save_images(images_list,tab_id):
 
     return file_path_name_list
 
+@click.group()
+def guitar_dl():
+    pass
 
-
-# @click.command()
-# @click.option('--url', help='the url of one guitar tab')
-def guitar_dl(url):
+@click.command()
+@click.option('--url', help='the url of one guitar tab')
+def download(url):
 
     """A tools for download tabs from jitashe.org """
 
@@ -121,14 +123,16 @@ def find_search_result(soup):
 
     return result_list
 
-def search_tabs(search_string):
-    
+@click.command()
+@click.option('--keywords', help='the keywords you want to search')
+def search(keywords):
+    ''' search tabs from jitashe.org'''
     url_base = "https://www.jitashe.org/search/tab/%s/"
 
     # param = {"wd": "莫烦Python"}  # 搜索的信息
     # r = requests.get('http://www.baidu.com/s', params=param)
     # print(r.url)
-    url = url_base%quote(search_string)
+    url = url_base%quote(keywords)
     soup = get_soup(url)
     # print(soup)
 
@@ -141,29 +145,34 @@ def search_tabs(search_string):
 
     # print(result_list)
 
+
+guitar_dl.add_command(download)
+guitar_dl.add_command(search)
+
+
 if __name__ == '__main__':
-    # guitar_dl()
+    guitar_dl()
+    # cli()
 
 
+    # urls = [
+    # # "https://www.jitashe.org/tab/14626/",
+    # # "https://www.jitashe.org/tab/1299551/",
+    # "https://www.jitashe.org/tab/14435/",
+    # # "https://www.jitashe.org/tab/1340565/",
+    # # "https://www.jitashe.org/tab/1307674/",
+    # # "https://www.jitashe.org/tab/9933/",
+    # # "https://www.jitashe.org/tab/9132/",
+    # # "https://www.jitashe.org/tab/67507/",
+    # # "https://www.jitashe.org/tab/1335746/",
+    # # "https://www.jitashe.org/tab/9851/",
+    # # "https://www.jitashe.org/tab/93549/"
+    # ]
 
-    urls = [
-    # "https://www.jitashe.org/tab/14626/",
-    # "https://www.jitashe.org/tab/1299551/",
-    "https://www.jitashe.org/tab/14435/",
-    # "https://www.jitashe.org/tab/1340565/",
-    # "https://www.jitashe.org/tab/1307674/",
-    # "https://www.jitashe.org/tab/9933/",
-    # "https://www.jitashe.org/tab/9132/",
-    # "https://www.jitashe.org/tab/67507/",
-    # "https://www.jitashe.org/tab/1335746/",
-    # "https://www.jitashe.org/tab/9851/",
-    # "https://www.jitashe.org/tab/93549/"
-    ]
-
-    # for url in urls:
-    #     print(url)
-    #     guitar_dl(url)
-    search_tabs("女儿情")
+    # # for url in urls:
+    # #     print(url)
+    # #     guitar_dl(url)
+    # search_tabs("女儿情")
 # ------------------------------
 
 # download 有谱么

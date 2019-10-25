@@ -152,8 +152,7 @@ guitar_dl.add_command(search)
 
 if __name__ == '__main__':
     guitar_dl()
-    # cli()
-
+    
 
     # urls = [
     # # "https://www.jitashe.org/tab/14626/",
@@ -175,7 +174,9 @@ if __name__ == '__main__':
     # search_tabs("女儿情")
 # ------------------------------
 
+
 # download 有谱么
+
 
 
 
